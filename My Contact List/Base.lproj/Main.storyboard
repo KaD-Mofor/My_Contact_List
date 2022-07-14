@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i7S-T8-ztL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i7S-T8-ztL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2iG-FG-OwJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-665" y="47"/>
+            <point key="canvasLocation" x="-1233" y="-325"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="tne-QT-ifu">
@@ -45,8 +45,8 @@
                                     <action selector="changeEditMode:" destination="BYZ-38-t0r" eventType="valueChanged" id="SoH-4V-n3o"/>
                                 </connections>
                             </segmentedControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JvA-c5-Utz">
-                                <rect key="frame" x="0.0" y="134" width="414" height="679"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="JvA-c5-Utz">
+                                <rect key="frame" x="0.0" y="134" width="414" height="630"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2hR-po-S4c">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="306.5"/>
@@ -98,6 +98,9 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                                        <connections>
+                                                            <segue destination="6oQ-1k-Qdt" kind="show" identifier="segueContactState" id="s1d-t2-v5j"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ZIP code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VTY-2R-cJd">
                                                         <rect key="frame" x="328.5" y="0.0" width="85.5" height="34"/>
@@ -182,7 +185,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="tinted" title="Change"/>
                                                         <connections>
-                                                            <segue destination="zaE-0d-ex5" kind="show" id="cFe-qy-TcE"/>
+                                                            <segue destination="zaE-0d-ex5" kind="show" identifier="segueContactDate" id="cFe-qy-TcE"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -212,7 +215,11 @@
                             <constraint firstItem="Enj-ox-HJV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vkM-zg-aPt"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Save" width="388" id="Jr9-9a-xMA"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Contact" id="AI9-0b-nbo"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnChange" destination="a1p-Y2-5l2" id="zWF-E5-P6S"/>
                         <outlet property="lblBirthdate" destination="Q06-Q2-8EC" id="2sA-lf-Q3o"/>
@@ -230,12 +237,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="921.73913043478262" y="81.696428571428569"/>
+            <point key="canvasLocation" x="686" y="82"/>
         </scene>
         <!--Birthday-->
         <scene sceneID="HAj-Eo-Y1r">
             <objects>
-                <viewController title="Birthday" id="zaE-0d-ex5" sceneMemberID="viewController">
+                <viewController title="Birthday" id="zaE-0d-ex5" customClass="DateViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5rT-g2-lwO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,10 +260,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cUT-Zn-1r0"/>
+                    <connections>
+                        <outlet property="dtpDate" destination="PLy-47-yte" id="h0T-MF-Jw8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT5-wj-zaj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1629" y="82"/>
+            <point key="canvasLocation" x="1503" y="32"/>
         </scene>
         <!--Map-->
         <scene sceneID="Igl-yK-oYI">
@@ -294,25 +304,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7Z-4o-DU1" userLabel="Settings">
-                                <rect key="frame" x="175.5" y="437.5" width="63" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="0KF-ZE-qkb">
+                                <rect key="frame" x="17.5" y="279" width="379" height="338"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Order:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9B-Nf-jKR">
+                                        <rect key="frame" x="133" y="0.0" width="113.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P5p-PM-G4h">
+                                        <rect key="frame" x="0.0" y="100" width="379" height="32"/>
+                                        <segments>
+                                            <segment title="Name"/>
+                                            <segment title="City"/>
+                                            <segment title="Address"/>
+                                            <segment title="State"/>
+                                            <segment title="Zip Code"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TRy-Te-3L7">
+                                        <rect key="frame" x="64" y="202" width="251.5" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascending Sort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4d-re-blQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="164.5" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oMo-WI-LJY">
+                                                <rect key="frame" x="174.5" y="0.0" width="77" height="32"/>
+                                                <segments>
+                                                    <segment title="On"/>
+                                                    <segment title="Off"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="sgmtEditMode:" destination="vcC-nC-fns" eventType="valueChanged" id="GCG-1L-FDH"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMx-mO-28x">
+                                        <rect key="frame" x="71.5" y="304" width="236" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default State:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nia-5Q-1nS">
+                                                <rect key="frame" x="0.0" y="0.0" width="129" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Georgia" borderStyle="roundedRect" placeholder="Georgia" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lFh-qc-loK">
+                                                <rect key="frame" x="139" y="0.0" width="97" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cvp-ok-cRw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="w7Z-4o-DU1" firstAttribute="centerY" secondItem="QEz-be-s29" secondAttribute="centerY" id="BXp-EH-lwC"/>
-                            <constraint firstItem="w7Z-4o-DU1" firstAttribute="centerX" secondItem="QEz-be-s29" secondAttribute="centerX" id="gc0-Zs-Eac"/>
+                            <constraint firstItem="0KF-ZE-qkb" firstAttribute="centerY" secondItem="QEz-be-s29" secondAttribute="centerY" id="pNk-9O-jIw"/>
+                            <constraint firstItem="0KF-ZE-qkb" firstAttribute="centerX" secondItem="QEz-be-s29" secondAttribute="centerX" id="vcF-uH-zH8"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="sample-834-bolt" landscapeImage="sample-834-bolt" selectedImage="sample-834-bolt" id="tFq-DP-s4n"/>
+                    <connections>
+                        <outlet property="sgmtAscending" destination="oMo-WI-LJY" id="zR2-HZ-HHZ"/>
+                        <outlet property="sgmtSortField" destination="P5p-PM-G4h" id="qmc-LW-eVD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLh-TM-LPG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-665" y="47"/>
+            <point key="canvasLocation" x="-823" y="384"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wf4-9q-5Uf">
@@ -331,7 +397,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75r-he-jDR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11.594202898550726" y="81.696428571428569"/>
+            <point key="canvasLocation" x="-126" y="66"/>
+        </scene>
+        <!--State-->
+        <scene sceneID="CNZ-xU-Fn1">
+            <objects>
+                <viewController title="State" id="6oQ-1k-Qdt" customClass="StateViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Unt-df-0p2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDR-rc-aTm">
+                                <rect key="frame" x="0.0" y="292" width="414" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="F2h-Qj-CCa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Kq-6Q-Pa5"/>
+                    <connections>
+                        <outlet property="statePicker" destination="iDR-rc-aTm" id="WZt-bK-oqk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QUF-QL-aBn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="-652"/>
         </scene>
     </scenes>
     <resources>
