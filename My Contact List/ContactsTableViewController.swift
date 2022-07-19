@@ -83,9 +83,21 @@ class ContactsTableViewController: UITableViewController {
         // Configure the cell...
         let contact = contacts[indexPath.row] as? Contact
         cell.textLabel?.text = contact?.contactName
-        cell.detailTextLabel?.text = contact?.city
+        //cell.detailTextLabel?.text = contact?.cellNumber
+        //cell.detailTextLabel?.text = contact?.streetAddress  //solution to exercise 3
+        //cell.detailTextLabel?.text = contact?.city           //solution to exercise 3
+        
+        //Converting Date to String.
+        let bday = contact?.birthday
+        let dateFormatter = DateFormatter()
+        //dateFormatter.dateFormat = "MM/dd/YY"   //Set date format.
+        //dateFormatter.locale = Locale(identifier: "usa")    //Setting date by locale
+        dateFormatter.dateStyle = .medium
+        let date = Date()  //Default date in case the contact has no birthdate saved
+        
+        cell.detailTextLabel?.text = "Born on: " + dateFormatter.string(from: bday ?? date)
         cell.accessoryType = .detailDisclosureButton
-
+        
         return cell
     }
     

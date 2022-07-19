@@ -11,6 +11,8 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
    
     @IBOutlet weak var pckSortField: UIPickerView!
     @IBOutlet weak var swAscending: UISwitch!
+    @IBOutlet weak var sgmtSortField: UISegmentedControl!
+    @IBOutlet weak var swDescending: UISwitch!
     
     let sortOrderItems: Array<String> = ["contactName", "city", "birthday"]
     
@@ -19,7 +21,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
         // Do any additional setup after loading the view.
         pckSortField.dataSource = self;
-        pckSortField.delegate = self;
+        pckSortField.delegate = self
         
     }
     
@@ -72,15 +74,31 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return true
     }
     
+    //MARK: viewWillAppear Method
+    
     override func viewWillAppear(_ animated: Bool) {
         //Set the UI based on values in the UserDefaults
         let settings = UserDefaults.standard
         swAscending.setOn(settings.bool(forKey: Constants.kSortDirectionAscending), animated: true)
-        let sortField = settings.string(forKey: Constants.kSortField)
+        //Second sort
+        swDescending.setOn(settings.bool(forKey: Constants.vSortDirectionDescending), animated: true)
+        
+        let sortField = settings.string(forKey: Constants.kSortField) //Ascending sort
+        let dSortField = settings.string(forKey: Constants.vSortField) //Descending sort
+        
         var i = 0
         for field in sortOrderItems {
-            if field == sortField{
+            if field == sortField && sgmtSortField.selectedSegmentIndex == 0 && swDescending.isOn {
                 pckSortField.selectRow(i, inComponent: 0, animated: false)
+                
+            }
+            else if field == sortField && sgmtSortField.selectedSegmentIndex == 1 && swDescending.isOn {
+                pckSortField.selectRow(i, inComponent: 0, animated: false)
+                
+            }
+            else if field == sortField && sgmtSortField.selectedSegmentIndex == 2 && swDescending.isOn {
+                pckSortField.selectRow(i, inComponent: 0, animated: false)
+                
             }
             i += 1
         }

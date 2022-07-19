@@ -89,19 +89,19 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         let textFields: [UITextField] = [txtName,txtAddress, txtCity, txtState, txtZip, txtCell, txtPhone, txtEmail]
         if sgmtEditMode.selectedSegmentIndex == 0 {
             for textField in textFields {
-                textField.isEnabled = false
-                textField.borderStyle = UITextField.BorderStyle.none
-            }
-            btnChange.isHidden = true
-            navigationItem.rightBarButtonItem = nil
-        }
-        else if sgmtEditMode.selectedSegmentIndex == 1 {
-            for textField in textFields {
                 textField.isEnabled = true
-                textField.borderStyle = UITextField.BorderStyle.roundedRect
+                textField.borderStyle = UITextField.BorderStyle.none
             }
             btnChange.isHidden = false
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:.save, target: self, action: #selector(self.saveContact))
+        }
+        else if sgmtEditMode.selectedSegmentIndex == 1 {
+            for textField in textFields {
+                textField.isEnabled = false
+                textField.borderStyle = UITextField.BorderStyle.roundedRect
+            }
+            btnChange.isHidden = true
+            navigationItem.rightBarButtonItem = nil
         }
     }
     
